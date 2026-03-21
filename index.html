@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impostor Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- SCREEN 1: Setup -->
+  <div id="screen-setup" class="screen active">
+    <div class="container">
+      <h1 class="logo">🕵️ Impostor</h1>
+      <p class="subtitle">Add at least 3 players to start</p>
+
+      <div class="input-row">
+        <input
+          id="player-input"
+          type="text"
+          placeholder="Player name…"
+          maxlength="20"
+          autocomplete="off"
+        />
+        <button id="add-player-btn" class="btn btn-secondary">Add</button>
+      </div>
+
+      <ul id="player-list"></ul>
+
+      <button id="start-game-btn" class="btn btn-primary" disabled>
+        Start Game
+      </button>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: Role reveal (per player) -->
+  <div id="screen-reveal" class="screen">
+    <div class="container">
+      <p class="turn-label">Pass the device to</p>
+      <h2 id="current-player-name" class="player-name"></h2>
+
+      <div id="role-card" class="card card-hidden" onclick="revealRole()">
+        <div class="card-front">
+          <span class="tap-hint">Tap to reveal your role</span>
+        </div>
+        <div class="card-back">
+          <p id="role-label" class="role-label"></p>
+          <p id="role-word" class="role-word"></p>
+        </div>
+      </div>
+
+      <button id="next-btn" class="btn btn-primary hidden" onclick="nextPlayer()">
+        Done — Pass device
+      </button>
+    </div>
+  </div>
+
+  <!-- SCREEN 3: Game on -->
+  <div id="screen-game" class="screen">
+    <div class="container">
+      <h1 class="logo">🎭</h1>
+      <h2 class="game-on-title">Everyone has seen their role!</h2>
+      <p class="game-on-desc">
+        Discuss, ask questions, and vote for who you think the impostor is.
+        The impostor wins by staying hidden.
+      </p>
+      <button class="btn btn-primary" onclick="resetGame()">Play Again</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
