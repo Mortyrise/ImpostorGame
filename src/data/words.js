@@ -1,0 +1,102 @@
+// Each entry: { word, hint }
+// hint = shown to the impostor when hint mode is on.
+// Rule: evocative but ambiguous — describes a feeling or context,
+// NOT the category. Should fit several different words.
+
+export const WORDS = [
+  // ── Deportes ──────────────────────────────────────────
+  { word: 'Fútbol',        hint: 'genera pasión colectiva' },
+  { word: 'Baloncesto',    hint: 'tiene millones de seguidores' },
+  { word: 'Tenis',         hint: 'requiere precisión y reflejos' },
+  { word: 'Natación',      hint: 'exige mucha resistencia' },
+  { word: 'Boxeo',         hint: 'hay un claro ganador y un perdedor' },
+  { word: 'Surf',          hint: 'depende totalmente del entorno' },
+  { word: 'Esquí',         hint: 'muy popular en ciertas épocas del año' },
+  { word: 'Ciclismo',      hint: 'se puede hacer solo o en grupo' },
+  { word: 'Golf',          hint: 'requiere mucha concentración' },
+  { word: 'Rugby',         hint: 'es físico e intenso' },
+  { word: 'Atletismo',     hint: 'se mide con números exactos' },
+  { word: 'Fórmula 1',     hint: 'va muy rápido' },
+  { word: 'Escalada',      hint: 'el entorno importa mucho' },
+  { word: 'Patinaje',      hint: 'requiere equilibrio y gracia' },
+
+  // ── Celebridades / personajes famosos ─────────────────
+  { word: 'Messi',             hint: 'es admirado en todo el mundo' },
+  { word: 'Cristiano Ronaldo', hint: 'conocido por su disciplina extrema' },
+  { word: 'Shakira',           hint: 'tiene algo muy reconocible' },
+  { word: 'Bad Bunny',         hint: 'ha revolucionado su industria' },
+  { word: 'Taylor Swift',      hint: 'tiene una base de fans muy fiel' },
+  { word: 'Beyoncé',           hint: 'es un icono cultural' },
+  { word: 'Elon Musk',         hint: 'siempre está en los titulares' },
+  { word: 'Freddie Mercury',   hint: 'su legado sigue más vivo que nunca' },
+  { word: 'Michael Jordan',    hint: 'es una leyenda en lo suyo' },
+  { word: 'Rosalía',           hint: 'mezcla tradición y modernidad' },
+  { word: 'Michael Jackson',   hint: 'cambió una industria para siempre' },
+  { word: 'Pablo Picasso',     hint: 'dejó una huella imborrable' },
+  { word: 'Albert Einstein',   hint: 'cambió cómo entendemos el mundo' },
+  { word: 'Barack Obama',      hint: 'hizo historia' },
+  { word: 'Adele',             hint: 'llega directo al corazón' },
+  { word: 'Lady Gaga',         hint: 'siempre sorprende' },
+
+  // ── Películas ──────────────────────────────────────────
+  { word: 'Titanic',                 hint: 'tiene un final que nadie olvidó' },
+  { word: 'Avatar',                  hint: 'rompió todos los récords' },
+  { word: 'El Padrino',              hint: 'se cita constantemente' },
+  { word: 'Joker',                   hint: 'genera debate y fascinación' },
+  { word: 'Inception',               hint: 'te hace cuestionar lo que ves' },
+  { word: 'Matrix',                  hint: 'cambió cómo pensamos sobre la realidad' },
+  { word: 'Frozen',                  hint: 'la conocen grandes y pequeños' },
+  { word: 'Toy Story',               hint: 'marcó a toda una generación' },
+  { word: 'Interstellar',            hint: 'te deja pensando días después' },
+  { word: 'El Rey León',             hint: 'emociona a cualquier edad' },
+  { word: 'Harry Potter',            hint: 'creó un universo propio' },
+  { word: 'Star Wars',               hint: 'es una saga legendaria' },
+  { word: 'Jurassic Park',           hint: 'mezcla asombro y miedo' },
+  { word: 'El Señor de los Anillos', hint: 'es épica y monumental' },
+
+  // ── Canciones ──────────────────────────────────────────
+  { word: 'Despacito',            hint: 'se escuchó en todo el planeta a la vez' },
+  { word: 'Bohemian Rhapsody',    hint: 'es difícil de olvidar aunque quieras' },
+  { word: 'La Macarena',          hint: 'se hizo viral antes de que existieran las redes' },
+  { word: 'Thriller',             hint: 'tiene algo visual muy asociado' },
+  { word: 'Gasolina',             hint: 'pone a la gente de buen humor' },
+  { word: 'Billie Jean',          hint: 'tiene un ritmo inconfundible' },
+  { word: 'We Will Rock You',     hint: 'se puede escuchar en estadios enteros' },
+  { word: 'Blinding Lights',      hint: 'estuvo meses en lo más alto' },
+  { word: 'Shape of You',         hint: 'se escuchó en todos los sitios a la vez' },
+  { word: 'Livin\' la Vida Loca', hint: 'tiene mucha energía' },
+
+  // ── Lugares ────────────────────────────────────────────
+  { word: 'Las Vegas',               hint: 'nadie se va igual que llegó' },
+  { word: 'Machu Picchu',            hint: 'cuesta llegar pero merece la pena' },
+  { word: 'La Torre Eiffel',         hint: 'todo el mundo la ha visto aunque sea en foto' },
+  { word: 'El Coliseo Romano',       hint: 'fue escenario de cosas épicas' },
+  { word: 'Disney World',            hint: 'saca el niño que llevamos dentro' },
+  { word: 'La Gran Muralla China',   hint: 'se construyó para proteger algo importante' },
+  { word: 'Las Pirámides de Egipto', hint: 'nadie sabe exactamente cómo se hizo' },
+  { word: 'La Sagrada Familia',      hint: 'lleva décadas siendo construida' },
+  { word: 'Times Square',            hint: 'siempre está lleno de luz y ruido' },
+  { word: 'La Alhambra',             hint: 'mezcla siglos y culturas distintas' },
+
+  // ── Comida ─────────────────────────────────────────────
+  { word: 'Pizza',             hint: 'se comparte sin pensarlo' },
+  { word: 'Sushi',             hint: 'requiere técnica para hacerlo bien' },
+  { word: 'Paella',            hint: 'genera debates apasionados' },
+  { word: 'Hamburguesa',       hint: 'hay versiones por todo el mundo' },
+  { word: 'Chocolate',         hint: 'levanta el ánimo' },
+  { word: 'Tacos',             hint: 'tiene muchas versiones distintas' },
+  { word: 'Churros',           hint: 'mejor en compañía' },
+  { word: 'Tortilla española', hint: 'genera más debate del que parece' },
+
+  // ── Otros ──────────────────────────────────────────────
+  { word: 'Volcán',     hint: 'tiene una fuerza destructiva y creadora a la vez' },
+  { word: 'Submarino',  hint: 'opera en silencio' },
+  { word: 'Cohete',     hint: 'apunta hacia algo muy lejano' },
+  { word: 'Dinosaurio', hint: 'desapareció pero sigue fascinando' },
+  { word: 'Robot',      hint: 'lo que antes era ciencia ficción' },
+  { word: 'Pirata',     hint: 'tiene una imagen muy reconocible' },
+  { word: 'Videojuego', hint: 'puede volverse adictivo fácilmente' },
+  { word: 'Circo',      hint: 'tiene de todo' },
+  { word: 'Fantasma',   hint: 'aparece cuando menos te lo esperas' },
+  { word: 'Superhéroe', hint: 'tiene un lado que nadie conoce' },
+]
