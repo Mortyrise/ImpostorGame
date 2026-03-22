@@ -1,12 +1,21 @@
 import { useState } from 'react'
 import { Settings, X } from 'lucide-react'
+import { useLang } from '../LangContext'
+import { B } from '../i18n.jsx'
 
 function capitalizeName(str) {
   return str.replace(/\b\w/g, c => c.toUpperCase())
 }
 
+const LANGS = [
+  { code: 'ca', label: 'CA' },
+  { code: 'es', label: 'ES' },
+  { code: 'en', label: 'EN' },
+]
+
 export default function SetupScreen({ players, setPlayers, settings, onOpenSettings, onStart }) {
   const [input, setInput] = useState('')
+  const { t, lang, setLang } = useLang()
 
   function addPlayer() {
     const name = capitalizeName(input.trim())
@@ -27,21 +36,34 @@ export default function SetupScreen({ players, setPlayers, settings, onOpenSetti
         <div className="row-between">
           <div className="logo-block">
             <h1 className="logo">Fars<em>ant</em></h1>
-            <p className="logo-sub">El joc de l'engany</p>
+            <p className="logo-sub">{t.logoSub}</p>
           </div>
-          <button className="icon-btn" onClick={onOpenSettings} title="Ajustes"><Settings size={16} /></button>
+          <div className="header-actions">
+            <div className="lang-switcher">
+              {LANGS.map(({ code, label }) => (
+                <button
+                  key={code}
+                  className={`lang-btn${lang === code ? ' active' : ''}`}
+                  onClick={() => setLang(code)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <button className="icon-btn" onClick={onOpenSettings} title="Ajustes"><Settings size={16} /></button>
+          </div>
         </div>
 
         <div className="how-to-play">
           <ol className="how-steps">
-            <li>Cada jugador recibe la <strong>misma palabra secreta</strong> en su turno</li>
-            <li>El <strong>farsant</strong> no la conoce — debe disimularlo</li>
-            <li>Por turnos, dad pistas <strong>sin decir la palabra</strong></li>
-            <li>Al final, <strong>votad</strong> quién creéis que es el farsant</li>
+            <li><B text={t.step1} /></li>
+            <li><B text={t.step2} /></li>
+            <li><B text={t.step3} /></li>
+            <li><B text={t.step4} /></li>
           </ol>
         </div>
 
-        <p className="subtitle" style={{ marginTop: '0.75rem' }}>Añade al menos 3 jugadores para empezar</p>
+        <p className="subtitle" style={{ marginTop: '0.75rem' }}>{t.addHint}</p>
 
         <div className="input-row">
           <input
@@ -49,11 +71,11 @@ export default function SetupScreen({ players, setPlayers, settings, onOpenSetti
             value={input}
             onChange={e => setInput(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && addPlayer()}
-            placeholder="Nombre del jugador…"
+            placeholder={t.playerPlaceholder}
             maxLength={20}
             autoComplete="off"
           />
-          <button className="btn btn-secondary" onClick={addPlayer}>+ añadir</button>
+          <button className="btn btn-secondary" onClick={addPlayer}>{t.addBtn}</button>
         </div>
 
         <ul className="player-list">
@@ -68,13 +90,12 @@ export default function SetupScreen({ players, setPlayers, settings, onOpenSetti
 
         {canStart && (
           <p className="settings-summary">
-            {settings.numImpostors} impostor{settings.numImpostors > 1 ? 'es' : ''} ·{' '}
-            pistas: {settings.hintMode ? 'activadas' : 'desactivadas'}
+            {t.impostorSummary(settings.numImpostors)} · {t.hintSummary(settings.hintMode)}
           </p>
         )}
 
         <button className="btn btn-primary" style={{ marginTop: '0.75rem' }} disabled={!canStart} onClick={onStart}>
-          Iniciar Operación
+          {t.startBtn}
         </button>
       </div>
     </div>

@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Hand } from 'lucide-react'
+import { useLang } from '../LangContext'
 
 export default function RevealScreen({ game, onNext }) {
   const [revealed, setRevealed] = useState(false)
   const [passing, setPassing] = useState(false)
+  const { t } = useLang()
 
   const { revealOrder, currentReveal, impostorIndices, word, hint, hintMode } = game
 
@@ -29,16 +31,15 @@ export default function RevealScreen({ game, onNext }) {
     }
   }
 
-  // ── Passing screen: hides everything, asks next player to take the device ──
   if (passing) {
     return (
       <div className="screen">
         <div className="container">
           <div className="passing-screen">
-            <p className="pass-to-label">Pasa el dispositivo a</p>
+            <p className="pass-to-label">{t.passTo}</p>
             <h2 className="pass-to-name">{nextPlayer}</h2>
             <button className="btn btn-primary" onClick={onNext}>
-              Soy {nextPlayer}, estoy listo
+              {t.imReady(nextPlayer)}
             </button>
           </div>
         </div>
@@ -46,7 +47,6 @@ export default function RevealScreen({ game, onNext }) {
     )
   }
 
-  // ── Reveal screen ──────────────────────────────────────────────────────────
   return (
     <div className="screen">
       <div className="container">
@@ -60,7 +60,7 @@ export default function RevealScreen({ game, onNext }) {
           ))}
         </div>
 
-        <p className="turn-label">tu turno</p>
+        <p className="turn-label">{t.yourTurn}</p>
         <h2 className="player-name">{currentPlayer}</h2>
 
         <div
@@ -69,25 +69,25 @@ export default function RevealScreen({ game, onNext }) {
         >
           <div className="card-front">
             <span className="tap-icon"><Hand size={36} /></span>
-            <span className="tap-hint">Toca para ver tu rol</span>
+            <span className="tap-hint">{t.tapToReveal}</span>
           </div>
           <div className="card-back">
             {isImpostor ? (
               <>
-                <p className="role-label">eres el</p>
-                <p className="role-word is-impostor">IMPOSTOR</p>
+                <p className="role-label">{t.youAreThe}</p>
+                <p className="role-word is-impostor">{t.farsant}</p>
                 {hintMode && hint && (
-                  <p className="role-hint">pista: {hint}</p>
+                  <p className="role-hint">{t.clueLabel} {hint}</p>
                 )}
                 {coImpostors.length > 0 && (
                   <p className="role-hint accomplice">
-                    cómplice{coImpostors.length > 1 ? 's' : ''}: {coImpostors.join(', ')}
+                    {t.accomplice(coImpostors.length)} {coImpostors.join(', ')}
                   </p>
                 )}
               </>
             ) : (
               <>
-                <p className="role-label">la palabra es</p>
+                <p className="role-label">{t.wordIs}</p>
                 <p className="role-word">{word}</p>
               </>
             )}
@@ -96,7 +96,7 @@ export default function RevealScreen({ game, onNext }) {
 
         {revealed && (
           <button className="btn btn-primary" onClick={handleDone}>
-            {isLast ? 'Todos listos →' : 'Listo, tapar pantalla'}
+            {isLast ? t.allReady : t.coverScreen}
           </button>
         )}
 

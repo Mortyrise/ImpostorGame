@@ -1,10 +1,12 @@
 import { ArrowLeft } from 'lucide-react'
+import { useLang } from '../LangContext'
 
 function maxImpostors(playerCount) {
   return Math.max(1, Math.floor(playerCount / 3))
 }
 
 export default function SettingsScreen({ settings, setSettings, playerCount, onBack }) {
+  const { t } = useLang()
   const max = maxImpostors(playerCount)
 
   function setNum(n) {
@@ -20,7 +22,7 @@ export default function SettingsScreen({ settings, setSettings, playerCount, onB
       <div className="container">
         <div className="row-between">
           <button className="icon-btn" onClick={onBack}><ArrowLeft size={16} /></button>
-          <h2 className="settings-title">AJUSTES</h2>
+          <h2 className="settings-title">{t.settingsTitle}</h2>
           <div style={{ width: 36 }} />
         </div>
 
@@ -28,11 +30,11 @@ export default function SettingsScreen({ settings, setSettings, playerCount, onB
 
           <div className="setting-row">
             <div className="setting-text">
-              <p className="setting-label">Impostores</p>
+              <p className="setting-label">{t.impostors}</p>
               <p className="setting-desc">
                 {playerCount >= 3
-                  ? `máx. ${max} para ${playerCount} jugadores`
-                  : 'añade jugadores para ajustar'}
+                  ? t.maxFor(max, playerCount)
+                  : t.addPlayersFirst}
               </p>
             </div>
             <div className="stepper">
@@ -54,10 +56,8 @@ export default function SettingsScreen({ settings, setSettings, playerCount, onB
 
           <div className="setting-row">
             <div className="setting-text">
-              <p className="setting-label">Pista al impostor</p>
-              <p className="setting-desc">
-                el impostor recibe una pista vaga sobre la categoría de la palabra
-              </p>
+              <p className="setting-label">{t.hintToFarsant}</p>
+              <p className="setting-desc">{t.hintDesc}</p>
             </div>
             <button
               className={`toggle ${settings.hintMode ? 'toggle-on' : ''}`}
@@ -70,7 +70,7 @@ export default function SettingsScreen({ settings, setSettings, playerCount, onB
 
         </div>
 
-        <button className="btn btn-primary" onClick={onBack}>Guardar</button>
+        <button className="btn btn-primary" onClick={onBack}>{t.save}</button>
       </div>
     </div>
   )
