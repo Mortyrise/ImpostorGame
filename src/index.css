@@ -58,10 +58,10 @@ body::before {
 .container {
   width: 100%;
   max-width: 430px;
-  padding: 2.5rem 1.25rem 3rem;
+  padding: 3rem 1.25rem 4.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 1.5rem;
 }
 
 /* ── Utilities ─────────────────────────────────────────── */
@@ -101,6 +101,59 @@ body::before {
 .subtitle {
   font-size: 0.85rem;
   color: var(--muted);
+}
+
+/* ── How to play ───────────────────────────────────────── */
+.how-to-play {
+  margin-top: 0.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+}
+
+.how-steps {
+  list-style: none;
+  counter-reset: steps;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+}
+
+.how-steps li {
+  counter-increment: steps;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.how-steps li::before {
+  content: counter(steps);
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--accent);
+  background: rgba(232,181,0,0.1);
+  border: 1px solid rgba(232,181,0,0.25);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
+  padding-top: 1px;
+}
+
+.how-steps li strong {
+  color: var(--text);
+  font-weight: 700;
 }
 
 /* ── Inputs ────────────────────────────────────────────── */
@@ -418,7 +471,10 @@ input[type="text"]::placeholder { color: var(--muted); }
 }
 
 .tap-icon {
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
   animation: float 2.5s ease infinite;
 }
 
@@ -551,4 +607,45 @@ input[type="text"]::placeholder { color: var(--muted); }
   color: var(--muted);
   font-size: 0.85rem;
   line-height: 1.7;
+}
+
+/* ── Desktop responsive ────────────────────────────────── */
+@media (min-width: 600px) {
+  .container {
+    max-width: 560px;
+    padding: 3.5rem 2rem 5rem;
+    gap: 1.8rem;
+  }
+
+  .logo { font-size: 3.4rem; }
+
+  .player-list { max-height: 340px; }
+
+  .how-steps li { font-size: 0.88rem; }
+
+  .card { height: 260px; }
+}
+
+@media (min-width: 900px) {
+  .container {
+    max-width: 660px;
+    padding: 5rem 3rem 6rem;
+    gap: 2.1rem;
+  }
+
+  .logo { font-size: 3.8rem; }
+
+  .player-list { max-height: 420px; }
+
+  .player-list li { padding: 0.8rem 1.2rem; font-size: 1rem; }
+
+  .how-steps li { font-size: 0.92rem; }
+
+  .how-to-play { padding: 1.3rem 1.6rem; }
+
+  .card { height: 300px; }
+
+  .pass-to-name { font-size: 4rem; }
+
+  .player-name { font-size: 3.4rem; }
 }

@@ -1,10 +1,12 @@
+import { Theater } from 'lucide-react'
+
 export default function GameScreen({ game, onReset }) {
   const impostorNames = game.revealOrder.filter((_, i) => game.impostorIndices.has(i))
 
   return (
     <div className="screen">
       <div className="container">
-        <h2 className="game-on-title">¡El juego<br/>empieza! 🎭</h2>
+        <h2 className="game-on-title">¡El juego<br/>empieza! <Theater size={22} style={{ display: 'inline', verticalAlign: 'middle' }} /></h2>
 
         <div className="info-card">
           <p className="info-label">Empieza con la primera pista</p>

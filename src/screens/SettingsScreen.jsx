@@ -1,3 +1,5 @@
+import { ArrowLeft } from 'lucide-react'
+
 function maxImpostors(playerCount) {
   return Math.max(1, Math.floor(playerCount / 3))
 }
@@ -17,7 +19,7 @@ export default function SettingsScreen({ settings, setSettings, playerCount, onB
     <div className="screen">
       <div className="container">
         <div className="row-between">
-          <button className="icon-btn" onClick={onBack}>←</button>
+          <button className="icon-btn" onClick={onBack}><ArrowLeft size={16} /></button>
           <h2 className="settings-title">AJUSTES</h2>
           <div style={{ width: 36 }} />
         </div>

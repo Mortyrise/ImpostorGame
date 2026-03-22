@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Hand } from 'lucide-react'
 
 export default function RevealScreen({ game, onNext }) {
   const [revealed, setRevealed] = useState(false)
@@ -67,7 +68,7 @@ export default function RevealScreen({ game, onNext }) {
           onClick={() => !revealed && setRevealed(true)}
         >
           <div className="card-front">
-            <span className="tap-icon">👆</span>
+            <span className="tap-icon"><Hand size={36} /></span>
             <span className="tap-hint">Toca para ver tu rol</span>
           </div>
           <div className="card-back">
