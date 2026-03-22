@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { WORDS } from './data/words'
+import LangSelectScreen from './screens/LangSelectScreen'
 import SetupScreen from './screens/SetupScreen'
 import SettingsScreen from './screens/SettingsScreen'
 import RevealScreen from './screens/RevealScreen'
@@ -52,7 +53,9 @@ function shuffle(arr) {
 }
 
 export default function App() {
-  const [screen, setScreen] = useState('setup')
+  const [screen, setScreen] = useState(
+    () => localStorage.getItem('farsant-visited') ? 'setup' : 'lang'
+  )
   const [players, setPlayers] = useState([])
   const [settings, setSettings] = useState({ numImpostors: 1, hintMode: false })
   const [game, setGame] = useState(null)
@@ -125,12 +128,16 @@ export default function App() {
 
   return (
     <>
+      {screen === 'lang' && (
+        <LangSelectScreen onSelect={() => setScreen('setup')} />
+      )}
       {screen === 'setup' && (
         <SetupScreen
           players={players}
           setPlayers={setPlayers}
           settings={settings}
           onOpenSettings={() => setScreen('settings')}
+          onChangeLang={() => setScreen('lang')}
           onStart={handleStartGame}
         />
       )}

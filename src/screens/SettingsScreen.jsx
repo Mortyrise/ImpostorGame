@@ -1,12 +1,18 @@
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Moon, Sun } from 'lucide-react'
 import { useLang } from '../LangContext'
+
+const LANG_OPTIONS = [
+  { code: 'ca', label: 'CA' },
+  { code: 'es', label: 'ES' },
+  { code: 'en', label: 'EN' },
+]
 
 function maxImpostors(playerCount) {
   return Math.max(1, Math.floor(playerCount / 3))
 }
 
 export default function SettingsScreen({ settings, setSettings, playerCount, onBack }) {
-  const { t } = useLang()
+  const { t, lang, setLang, theme, setTheme } = useLang()
   const max = maxImpostors(playerCount)
 
   function setNum(n) {
@@ -20,14 +26,60 @@ export default function SettingsScreen({ settings, setSettings, playerCount, onB
   return (
     <div className="screen">
       <div className="container">
+
         <div className="row-between">
-          <button className="icon-btn" onClick={onBack}><ArrowLeft size={16} /></button>
+          <button className="icon-btn" onClick={onBack}><ArrowLeft size={20} /></button>
           <h2 className="settings-title">{t.settingsTitle}</h2>
-          <div style={{ width: 36 }} />
+          <div style={{ width: 46 }} />
         </div>
 
+        {/* ── Idioma ── */}
         <div className="settings-section">
+          <div className="setting-row">
+            <div className="setting-text">
+              <p className="setting-label">{t.langSection}</p>
+            </div>
+            <div className="seg-control">
+              {LANG_OPTIONS.map(({ code, label }) => (
+                <button
+                  key={code}
+                  className={`seg-btn${lang === code ? ' active' : ''}`}
+                  onClick={() => setLang(code)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
 
+        {/* ── Apariencia ── */}
+        <div className="settings-section">
+          <div className="setting-row">
+            <div className="setting-text">
+              <p className="setting-label">{t.themeLabel}</p>
+            </div>
+            <div className="seg-control">
+              <button
+                className={`seg-btn${theme === 'dark' ? ' active' : ''}`}
+                onClick={() => setTheme('dark')}
+              >
+                <Moon size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 4 }} />
+                {t.themeDark}
+              </button>
+              <button
+                className={`seg-btn${theme === 'light' ? ' active' : ''}`}
+                onClick={() => setTheme('light')}
+              >
+                <Sun size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 4 }} />
+                {t.themeLight}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Juego ── */}
+        <div className="settings-section">
           <div className="setting-row">
             <div className="setting-text">
               <p className="setting-label">{t.impostors}</p>
@@ -67,7 +119,6 @@ export default function SettingsScreen({ settings, setSettings, playerCount, onB
               <span className="toggle-thumb" />
             </button>
           </div>
-
         </div>
 
         <button className="btn btn-primary" onClick={onBack}>{t.save}</button>

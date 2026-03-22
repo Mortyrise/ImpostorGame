@@ -7,15 +7,9 @@ function capitalizeName(str) {
   return str.replace(/\b\w/g, c => c.toUpperCase())
 }
 
-const LANGS = [
-  { code: 'ca', label: 'CA' },
-  { code: 'es', label: 'ES' },
-  { code: 'en', label: 'EN' },
-]
-
 export default function SetupScreen({ players, setPlayers, settings, onOpenSettings, onStart }) {
   const [input, setInput] = useState('')
-  const { t, lang, setLang } = useLang()
+  const { t } = useLang()
 
   function addPlayer() {
     const name = capitalizeName(input.trim())
@@ -33,26 +27,18 @@ export default function SetupScreen({ players, setPlayers, settings, onOpenSetti
   return (
     <div className="screen">
       <div className="container">
-        <div className="row-between">
+
+        <div className="setup-header">
           <div className="logo-block">
             <h1 className="logo">Fars<em>ant</em></h1>
             <p className="logo-sub">{t.logoSub}</p>
           </div>
-          <div className="header-actions">
-            <div className="lang-switcher">
-              {LANGS.map(({ code, label }) => (
-                <button
-                  key={code}
-                  className={`lang-btn${lang === code ? ' active' : ''}`}
-                  onClick={() => setLang(code)}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-            <button className="icon-btn" onClick={onOpenSettings} title="Ajustes"><Settings size={16} /></button>
-          </div>
+          <button className="icon-btn" onClick={onOpenSettings} title="Ajustes">
+            <Settings size={20} />
+          </button>
         </div>
+
+        <p className="word-tagline"><B text={t.wordTagline} /></p>
 
         <div className="how-to-play">
           <ol className="how-steps">
@@ -83,7 +69,7 @@ export default function SetupScreen({ players, setPlayers, settings, onOpenSetti
             <li key={i}>
               <span className="player-num">{String(i + 1).padStart(2, '0')}</span>
               <span className="player-name-text">{name}</span>
-              <button className="remove-btn" onClick={() => removePlayer(i)}><X size={13} /></button>
+              <button className="remove-btn" onClick={() => removePlayer(i)}><X size={15} /></button>
             </li>
           ))}
         </ul>
@@ -97,6 +83,7 @@ export default function SetupScreen({ players, setPlayers, settings, onOpenSetti
         <button className="btn btn-primary" style={{ marginTop: '0.75rem' }} disabled={!canStart} onClick={onStart}>
           {t.startBtn}
         </button>
+
       </div>
     </div>
   )
