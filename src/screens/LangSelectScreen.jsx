@@ -1,5 +1,6 @@
 import { ChevronRight, Sun, Moon } from 'lucide-react'
 import { useLang } from '../LangContext'
+import { LANG } from '../i18n.jsx'
 
 const OPTIONS = [
   { code: 'ca', name: 'Català',  sub: "El joc de l'engany" },
@@ -25,7 +26,7 @@ export default function LangSelectScreen({ onSelect }) {
         </button>
 
         <div className="lang-select-logo">
-          <h1 className="logo">Fars<em>ant</em></h1>
+          <h1 className="logo">{LANG[lang].logoName[0]}<em>{LANG[lang].logoName[1]}</em></h1>
         </div>
 
         <div className="lang-select-options">

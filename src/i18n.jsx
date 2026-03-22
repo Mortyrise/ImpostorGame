@@ -1,10 +1,11 @@
 
 export const LANG = {
   es: {
+    logoName: ['Farsan', 'te'],
     logoSub: 'El juego del engaño',
     wordTagline: 'Un farsante es una persona que finge sentimientos, cualidades o situaciones que no son reales, actuando como un **impostor**, mentiroso o engañador.',
     step1: 'Cada jugador recibe la **misma palabra secreta** en su turno',
-    step2: 'El **farsant** no la conoce — debe disimularlo',
+    step2: 'El **farsant** no la conoce, debe disimularlo',
     step3: 'Por turnos, dad pistas **sin decir la palabra**',
     step4: 'Al final, **votad** quién creéis que es el farsant',
     addHint: 'Añade al menos 3 jugadores para empezar',
@@ -47,10 +48,11 @@ export const LANG = {
   },
 
   ca: {
+    logoName: ['Fars', 'ant'],
     logoSub: "El joc de l'engany",
     wordTagline: 'Un farsant és una persona que fingeix sentiments, qualitats o situacions que no són reals, actuant com un **impostor**, mentider o enganyador.',
     step1: 'Cada jugador rep la **mateixa paraula secreta** al seu torn',
-    step2: 'El **farsant** no la coneix — ha de dissimular-ho',
+    step2: 'El **farsant** no la coneix, ha de dissimular-ho',
     step3: 'Per torns, doneu pistes **sense dir la paraula**',
     step4: 'Al final, **voteu** qui creieu que és el farsant',
     addHint: 'Afegeix almenys 3 jugadors per començar',
@@ -93,10 +95,11 @@ export const LANG = {
   },
 
   en: {
+    logoName: ['Fars', 'ant'],
     logoSub: 'The deception game',
     wordTagline: 'A farsant is a person who fakes feelings, qualities or situations that are not real, acting as an **impostor**, liar or deceiver.',
     step1: 'Each player receives the **same secret word** on their turn',
-    step2: 'The **farsant** doesn\'t know it — they must blend in',
+    step2: 'The **farsant** doesn\'t know it, they must blend in',
     step3: 'Take turns giving clues **without saying the word**',
     step4: 'At the end, **vote** on who you think is the farsant',
     addHint: 'Add at least 3 players to start',

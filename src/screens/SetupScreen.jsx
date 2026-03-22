@@ -30,7 +30,7 @@ export default function SetupScreen({ players, setPlayers, settings, onOpenSetti
 
         <div className="setup-header">
           <div className="logo-block">
-            <h1 className="logo">Fars<em>ant</em></h1>
+            <h1 className="logo">{t.logoName[0]}<em>{t.logoName[1]}</em></h1>
             <p className="logo-sub">{t.logoSub}</p>
           </div>
           <button className="icon-btn" onClick={onOpenSettings} title="Ajustes">
@@ -42,14 +42,14 @@ export default function SetupScreen({ players, setPlayers, settings, onOpenSetti
 
         <div className="how-to-play">
           <ol className="how-steps">
-            <li><B text={t.step1} /></li>
-            <li><B text={t.step2} /></li>
-            <li><B text={t.step3} /></li>
-            <li><B text={t.step4} /></li>
+            <li><span><B text={t.step1} /></span></li>
+            <li><span><B text={t.step2} /></span></li>
+            <li><span><B text={t.step3} /></span></li>
+            <li><span><B text={t.step4} /></span></li>
           </ol>
         </div>
 
-        <p className="subtitle" style={{ marginTop: '0.75rem' }}>{t.addHint}</p>
+        <p className="subtitle">{t.addHint}</p>
 
         <div className="input-row">
           <input
@@ -80,7 +80,7 @@ export default function SetupScreen({ players, setPlayers, settings, onOpenSetti
           </p>
         )}
 
-        <button className="btn btn-primary" style={{ marginTop: '0.75rem' }} disabled={!canStart} onClick={onStart}>
+        <button className="btn btn-primary" disabled={!canStart} onClick={onStart}>
           {t.startBtn}
         </button>
 
