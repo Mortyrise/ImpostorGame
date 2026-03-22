@@ -42,6 +42,15 @@ function pickWeightedImpostors(players, count, weights) {
   return selected
 }
 
+function shuffle(arr) {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
 export default function App() {
   const [screen, setScreen] = useState('setup')
   const [players, setPlayers] = useState([])
@@ -49,10 +58,26 @@ export default function App() {
   const [game, setGame] = useState(null)
   // weights[name] = games since last was impostor. Persists across games.
   const [playerWeights, setPlayerWeights] = useState({})
+  // Shuffle bag: deck of word indices, guarantees no repeats until all words seen
+  const [wordDeck, setWordDeck] = useState(() => {
+    try {
+      const stored = localStorage.getItem('farsant-deck')
+      return stored ? JSON.parse(stored) : []
+    } catch { return [] }
+  })
+
+  function pickNextWord() {
+    let deck = wordDeck.length > 0 ? wordDeck : shuffle([...Array(WORDS.length).keys()])
+    const idx = deck[0]
+    const remaining = deck.slice(1)
+    setWordDeck(remaining)
+    localStorage.setItem('farsant-deck', JSON.stringify(remaining))
+    return WORDS[idx]
+  }
 
   function handleStartGame() {
     const shuffled = [...players].sort(() => Math.random() - 0.5)
-    const entry = WORDS[Math.floor(Math.random() * WORDS.length)]
+    const entry = pickNextWord()
 
     // Restrict weights to current players only (handles player list changes between games)
     const currentWeights = Object.fromEntries(

@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react'
 import { Hand } from 'lucide-react'
 import { useLang } from '../LangContext'
 
+
 export default function RevealScreen({ game, onNext }) {
   const [revealed, setRevealed] = useState(false)
   const [passing, setPassing] = useState(false)
-  const { t } = useLang()
+  const { t, lang } = useLang()
 
   const { revealOrder, currentReveal, impostorIndices, word, hint, hintMode } = game
 
@@ -77,7 +78,7 @@ export default function RevealScreen({ game, onNext }) {
                 <p className="role-label">{t.youAreThe}</p>
                 <p className="role-word is-impostor">{t.farsant}</p>
                 {hintMode && hint && (
-                  <p className="role-hint">{t.clueLabel} {hint}</p>
+                  <p className="role-hint">{t.clueLabel} {hint[lang]}</p>
                 )}
                 {coImpostors.length > 0 && (
                   <p className="role-hint accomplice">
