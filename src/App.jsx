@@ -79,7 +79,7 @@ export default function App() {
   }
 
   function handleStartGame() {
-    const shuffled = [...players].sort(() => Math.random() - 0.5)
+    const shuffled = shuffle([...players])
     const entry = pickNextWord()
 
     // Restrict weights to current players only (handles player list changes between games)
