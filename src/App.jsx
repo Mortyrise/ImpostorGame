@@ -155,6 +155,12 @@ export default function App() {
       {screen === 'game' && game && (
         <GameScreen game={game} onReset={handleReset} />
       )}
+
+      <footer className="app-footer">
+        <a href="https://joanmarc.dev" target="_blank" rel="noopener noreferrer">
+          joanmarc.dev
+        </a>
+      </footer>
     </>
   )
 }
