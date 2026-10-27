@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Farsant</string>
+    <string name="title_activity_main">Farsant</string>
+    <string name="package_name">com.mortyrise.farsant</string>
+    <string name="custom_url_scheme">com.mortyrise.farsant</string>
+</resources>

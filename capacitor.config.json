@@ -1,0 +1,11 @@
+{
+  "appId": "com.mortyrise.farsant",
+  "appName": "Farsant",
+  "webDir": "dist",
+  "android": {
+    "backgroundColor": "#1a1a2e"
+  },
+  "server": {
+    "androidScheme": "https"
+  }
+}

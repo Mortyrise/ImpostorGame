@@ -2,3 +2,17 @@ node_modules
 dist
 .env
 .env.local
+
+# Capacitor Android build artifacts
+android/app/build
+android/.gradle
+android/build
+android/capacitor-cordova-android-plugins/build
+
+# IDE
+.idea/
+
+# Signing (never commit)
+*.jks
+*.keystore
+android/keystore.properties
