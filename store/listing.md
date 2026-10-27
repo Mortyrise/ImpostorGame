@@ -9,7 +9,7 @@ below but hold it back until the secret words are translated: today the words
 in `src/data/words.js` are Spanish-only, so an English player would get
 Spanish words.
 
-Privacy policy URL: `https://<vercel-domain>/privacy.html` (from `public/privacy.html`).
+Privacy policy URL: `https://farsant.vercel.app/privacy.html` (from `public/privacy.html`).
 
 ---
 
